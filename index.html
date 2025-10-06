@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio nkz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Devicon CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
+
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body
+    class="bg-gradient-to-b from-black via-gray-900 to-gray-800 relative text-white min-h-screen flex flex-col"
+  >
+    <!-- Pink blobs -->
+
+    <nav
+      class="sticky top-0 flex flex-wrap justify-center items-center gap-x-10 gap-y-2 py-6 z-50 bg-transparent text-white backdrop-blur-sm text-base"
+    >
+      <a href="#home" class="hover:text-pink-500 transition-colors">Home</a>
+      <a href="#skill" class="hover:text-pink-500 transition-colors">Skill</a>
+      <a href="#portfolio" class="hover:text-pink-500 transition-colors"
+        >Portfolio</a
+      >
+      <a href="#about" class="hover:text-pink-500 transition-colors"
+        >About Me</a
+      >
+      <a href="#social" class="hover:text-pink-500 transition-colors">Social</a>
+    </nav>
+
+    <section
+      id="home"
+      class="relative w-full h-screen overflow-hidden flex items-center justify-center -mt-[88px]"
+      style="
+        background: linear-gradient(
+            to top,
+            rgba(235, 68, 154, 0.8) 0%,
+            rgba(235, 68, 154, 0.3) 25%,
+            rgba(235, 68, 154, 0.1) 50%,
+            rgba(235, 68, 154, 0) 75%
+          ),
+          #111111;
+      "
+    >
+      <!-- Pink blur circles -->
+      <div
+        class="hero-circle absolute bottom-[-200px] left-[-100px] w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-[#EB449A] to-[#D53266] opacity-90 z-0 md:block blur-[12px] fade-up"
+      ></div>
+      <div
+        class="hero-circle absolute top-[-150px] right-[-150px] w-[350px] h-[350px] rounded-full bg-gradient-to-tr from-[#EB449A] to-[#D53266] opacity-90 z-0 md:block blur-[10px] fade-up"
+      ></div>
+      <div
+        class="hero-circle absolute top-[250px] right-[80px] w-[150px] h-[150px] rounded-full bg-gradient-to-tr from-[#EB449A] to-[#D53266] opacity-90 z-0 md:block blur-[3px] fade-up"
+      ></div>
+      <div
+        class="absolute bottom-[200px] left-[100px] w-[150px] h-[150px] rounded-full bg-gradient-to-tr from-[#EB449A] to-[#D53266] opacity-90 z-0 md:block blur-[5px] fade-up"
+      ></div>
+
+      <!-- Content -->
+      <div
+        class="relative z-10 flex flex-col md:flex-row items-center gap-8 px-6 md:px-20 fade-up"
+      >
+        <!-- Profile Image -->
+        <div
+          class="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-white shadow-lg"
+        >
+          <img
+            src="assets/images/Ellipse 1.png"
+            alt="Profile"
+            class="w-full h-full object-cover"
+          />
+        </div>
+
+        <!-- Text -->
+        <div class="text-center md:text-left">
+          <h1 class="text-3xl md:text-5xl font-light text-white">Hi,</h1>
+          <h1
+            class="text-3xl md:text-5xl font-bold text-white flex items-center gap-2 leading-none"
+          >
+            I am
+            <span
+              id="changing-word"
+              class="text-pink-500 inline-block relative overflow-hidden align-middle translate-y-[-0.1em]"
+              >nakzuwu
+            </span>
+          </h1>
+          <p class="mt-4 text-gray-300 text-sm md:text-lg">
+            Design Graphic | Motion Graphic | Web Developer | Linux
+            enthusiast<br />
+            Silence isn’t stupidity, it’s hunger.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="skill"
+      class="relative w-full bg-[#181818] text-white py-20 overflow-hidden"
+    >
+      <!-- Title -->
+      <div class="text-center mb-12 fade-up">
+        <h2 class="text-4xl font-bold">
+          &lt;My <span class="text-pink-500">Skills</span>/&gt;
+        </h2>
+        <p class="text-gray-400 mt-2">Maybe I know</p>
+      </div>
+      <!-- Container -->
+      <div class="flex flex-col space-y-8 overflow-hidden fade-up">
+        <!-- Row 1: Languages -->
+        <div class="flex flex-nowrap space-x-3 overflow-hidden">
+          <div id="row1" class="flex space-x-3 will-change-transform">
+            <div class="flex space-x-3 min-w-full">
+              <span class="skill bg-[#0078D7]"
+                ><i class="devicon-dart-plain"></i>Dart</span
+              >
+              <span class="skill bg-[#f89820]"
+                ><i class="devicon-java-plain"></i>Java</span
+              >
+              <span class="skill bg-[#f7df1e] text-black"
+                ><i class="devicon-javascript-plain"></i>JavaScript</span
+              >
+              <span class="skill bg-[#e34c26]"
+                ><i class="devicon-html5-plain"></i>HTML5</span
+              >
+              <span class="skill bg-[#777BB4]"
+                ><i class="devicon-php-plain"></i>PHP</span
+              >
+              <span class="skill bg-[#3776AB]"
+                ><i class="devicon-python-plain"></i>Python</span
+              >
+              <span class="skill bg-[#F38020]"
+                ><i class="devicon-cloudflare-plain"></i>Cloudflare</span
+              >
+              <span class="skill bg-[#039BE5]"
+                ><i class="devicon-firebase-plain"></i>Firebase</span
+              >
+              <span class="skill bg-[#0078D7]"
+                ><i class="devicon-dart-plain"></i>Dart</span
+              >
+              <span class="skill bg-[#f89820]"
+                ><i class="devicon-java-plain"></i>Java</span
+              >
+              <span class="skill bg-[#f7df1e] text-black"
+                ><i class="devicon-javascript-plain"></i>JavaScript</span
+              >
+              <span class="skill bg-[#e34c26]"
+                ><i class="devicon-html5-plain"></i>HTML5</span
+              >
+              <span class="skill bg-[#777BB4]"
+                ><i class="devicon-php-plain"></i>PHP</span
+              >
+              <span class="skill bg-[#3776AB]"
+                ><i class="devicon-python-plain"></i>Python</span
+              >
+              <span class="skill bg-[#F38020]"
+                ><i class="devicon-cloudflare-plain"></i>Cloudflare</span
+              >
+              <span class="skill bg-[#039BE5]"
+                ><i class="devicon-firebase-plain"></i>Firebase</span
+              >
+              <span class="skill bg-[#0078D7]"
+                ><i class="devicon-dart-plain"></i>Dart</span
+              >
+              <span class="skill bg-[#f89820]"
+                ><i class="devicon-java-plain"></i>Java</span
+              >
+              <span class="skill bg-[#f7df1e] text-black"
+                ><i class="devicon-javascript-plain"></i>JavaScript</span
+              >
+              <span class="skill bg-[#e34c26]"
+                ><i class="devicon-html5-plain"></i>HTML5</span
+              >
+              <span class="skill bg-[#777BB4]"
+                ><i class="devicon-php-plain"></i>PHP</span
+              >
+              <span class="skill bg-[#3776AB]"
+                ><i class="devicon-python-plain"></i>Python</span
+              >
+              <span class="skill bg-[#F38020]"
+                ><i class="devicon-cloudflare-plain"></i>Cloudflare</span
+              >
+              <span class="skill bg-[#039BE5]"
+                ><i class="devicon-firebase-plain"></i>Firebase</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2: Frameworks & Tools -->
+        <div class="flex flex-nowrap space-x-3 overflow-hidden">
+          <div id="row2" class="flex space-x-3 will-change-transform">
+            <div class="flex space-x-3 min-w-full">
+              <span class="skill bg-[#F05340]"
+                ><i class="devicon-laravel-plain"></i>Laravel</span
+              >
+              <span class="skill bg-[#353535]"
+                ><i class="devicon-flask-original"></i>Flask</span
+              >
+              <span class="skill bg-[#009688]"
+                ><i class="devicon-fastapi-plain"></i>FastAPI</span
+              >
+              <span class="skill bg-[#E44D26]"
+                ><i class="devicon-codeigniter-plain"></i>CodeIgniter</span
+              >
+              <span class="skill bg-[#02569B]"
+                ><i class="devicon-flutter-plain"></i>Flutter</span
+              >
+              <span class="skill bg-[#000000]"
+                ><i class="devicon-nextjs-original"></i>Next.js</span
+              >
+              <span class="skill bg-[#61DAFB] text-black"
+                ><i class="devicon-react-original"></i>React</span
+              >
+              <span class="skill bg-[#009639]"
+                ><i class="devicon-nginx-original"></i>Nginx</span
+              >
+              <span class="skill bg-[#F05340]"
+                ><i class="devicon-laravel-plain"></i>Laravel</span
+              >
+              <span class="skill bg-[#353535]"
+                ><i class="devicon-flask-original"></i>Flask</span
+              >
+              <span class="skill bg-[#009688]"
+                ><i class="devicon-fastapi-plain"></i>FastAPI</span
+              >
+              <span class="skill bg-[#E44D26]"
+                ><i class="devicon-codeigniter-plain"></i>CodeIgniter</span
+              >
+              <span class="skill bg-[#02569B]"
+                ><i class="devicon-flutter-plain"></i>Flutter</span
+              >
+              <span class="skill bg-[#000000]"
+                ><i class="devicon-nextjs-original"></i>Next.js</span
+              >
+              <span class="skill bg-[#61DAFB] text-black"
+                ><i class="devicon-react-original"></i>React</span
+              >
+              <span class="skill bg-[#009639]"
+                ><i class="devicon-nginx-original"></i>Nginx</span
+              >
+              <span class="skill bg-[#F05340]"
+                ><i class="devicon-laravel-plain"></i>Laravel</span
+              >
+              <span class="skill bg-[#353535]"
+                ><i class="devicon-flask-original"></i>Flask</span
+              >
+              <span class="skill bg-[#009688]"
+                ><i class="devicon-fastapi-plain"></i>FastAPI</span
+              >
+              <span class="skill bg-[#E44D26]"
+                ><i class="devicon-codeigniter-plain"></i>CodeIgniter</span
+              >
+              <span class="skill bg-[#02569B]"
+                ><i class="devicon-flutter-plain"></i>Flutter</span
+              >
+              <span class="skill bg-[#000000]"
+                ><i class="devicon-nextjs-original"></i>Next.js</span
+              >
+              <span class="skill bg-[#61DAFB] text-black"
+                ><i class="devicon-react-original"></i>React</span
+              >
+              <span class="skill bg-[#009639]"
+                ><i class="devicon-nginx-original"></i>Nginx</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 3: Design Apps -->
+        <div class="flex flex-nowrap space-x-3 overflow-hidden">
+          <div id="row3" class="flex space-x-3 will-change-transform">
+            <div class="flex space-x-3 min-w-full">
+              <span class="skill bg-[#FF0000]"
+                ><i class="devicon-adobe-plain"></i>Adobe</span
+              >
+              <span class="skill bg-[#FF9A00]"
+                ><i class="devicon-illustrator-plain"></i>Illustrator</span
+              >
+              <span class="skill bg-[#31A8FF]"
+                ><i class="devicon-photoshop-plain"></i>Photoshop</span
+              >
+              <span class="skill bg-[#9999FF]"
+                ><i class="devicon-aftereffects-plain"></i>After Effects</span
+              >
+              <span class="skill bg-[#9A4CFF]"
+                ><i class="devicon-premierepro-plain"></i>Premiere Pro</span
+              >
+              <span class="skill bg-[#F24E1E]"
+                ><i class="devicon-figma-plain"></i>Figma</span
+              >
+              <span class="skill bg-[#9A4CFF]"
+                ><i class="devicon-lightroom-plain"></i>Lightroom</span
+              >
+              <span class="skill bg-[#FF0000]"
+                ><i class="devicon-adobe-plain"></i>Adobe</span
+              >
+              <span class="skill bg-[#FF9A00]"
+                ><i class="devicon-illustrator-plain"></i>Illustrator</span
+              >
+              <span class="skill bg-[#31A8FF]"
+                ><i class="devicon-photoshop-plain"></i>Photoshop</span
+              >
+              <span class="skill bg-[#9999FF]"
+                ><i class="devicon-aftereffects-plain"></i>After Effects</span
+              >
+              <span class="skill bg-[#9A4CFF]"
+                ><i class="devicon-premierepro-plain"></i>Premiere Pro</span
+              >
+              <span class="skill bg-[#F24E1E]"
+                ><i class="devicon-figma-plain"></i>Figma</span
+              >
+              <span class="skill bg-[#9A4CFF]"
+                ><i class="devicon-lightroom-plain"></i>Lightroom</span
+              >
+              <span class="skill bg-[#FF0000]"
+                ><i class="devicon-adobe-plain"></i>Adobe</span
+              >
+              <span class="skill bg-[#FF9A00]"
+                ><i class="devicon-illustrator-plain"></i>Illustrator</span
+              >
+              <span class="skill bg-[#31A8FF]"
+                ><i class="devicon-photoshop-plain"></i>Photoshop</span
+              >
+              <span class="skill bg-[#9999FF]"
+                ><i class="devicon-aftereffects-plain"></i>After Effects</span
+              >
+              <span class="skill bg-[#9A4CFF]"
+                ><i class="devicon-premierepro-plain"></i>Premiere Pro</span
+              >
+              <span class="skill bg-[#F24E1E]"
+                ><i class="devicon-figma-plain"></i>Figma</span
+              >
+              <span class="skill bg-[#9A4CFF]"
+                ><i class="devicon-lightroom-plain"></i>Lightroom</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="bg-[#0f0f0f] text-gray-200 py-16">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <!-- Title -->
+        <div class="text-center mb-12 fade-up">
+          <h2 class="text-4xl font-bold">
+            &lt;My <span class="text-pink-500">Portfolio</span>/&gt;
+          </h2>
+          <p class="text-gray-400 mt-2">My creative works</p>
+        </div>
+
+        <!-- Tabs -->
+        <div
+          class="flex justify-center space-x-4 text-sm font-semibold mb-10 fade-up"
+        >
+          <button
+            class="tab-btn active-tab text-pink-400 border-b-2 border-pink-400 pb-1 transition-colors duration-300"
+            data-tab="github"
+          >
+            Github Project
+          </button>
+          <button
+            class="tab-btn text-gray-400 hover:text-pink-400 transition-colors duration-300"
+            data-tab="design"
+          >
+            Design
+          </button>
+          <button
+            class="tab-btn text-gray-400 hover:text-pink-400 transition-colors duration-300"
+            data-tab="motion"
+          >
+            Motion Graphic
+          </button>
+        </div>
+
+        <!-- Tabs Content -->
+        <div class="tab-container fade-up">
+          <!-- Github Projects -->
+          <div id="tab-github" class="tab-content fade-up">
+            <div class="flex flex-col items-center space-y-8">
+              <div
+                class="portfolio-repos grid gap-6 justify-items-center w-full sm:grid-cols-2 md:grid-cols-3 mt-8"
+              ></div>
+
+              <!-- Show More Button -->
+              <button
+                id="show-more"
+                class="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-lg shadow hidden transition-colors duration-300"
+              >
+                Show More
+              </button>
+
+              <!-- Github Stats -->
+              <div class="mt-10 space-y-6 fade-up">
+                <h3 class="text-lg font-semibold">GitHub Stats</h3>
+                <div class="flex flex-wrap justify-center gap-6">
+                  <img
+                    src="https://github-readme-stats.vercel.app/api?username=nakzuwu&theme=dark&hide_border=false&include_all_commits=true&count_private=false"
+                    alt="GitHub Stats"
+                    class="rounded-lg shadow-lg"
+                  />
+                  <img
+                    src="https://nirzak-streak-stats.vercel.app/?user=nakzuwu&theme=dark&hide_border=false"
+                    alt="GitHub Streak"
+                    class="rounded-lg shadow-lg"
+                  />
+                  <img
+                    src="https://github-readme-stats.vercel.app/api/top-langs/?username=nakzuwu&theme=dark&hide_border=false&layout=compact"
+                    alt="Top Languages"
+                    class="rounded-lg shadow-lg"
+                  />
+                  <img
+                    src="https://github-profile-trophy.vercel.app/?username=nakzuwu&theme=shades-of-purple&no-frame=false&no-bg=true&margin-w=4"
+                    alt="GitHub Trophies"
+                    class="rounded-lg shadow-lg"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Design -->
+          <div id="tab-design" class="tab-content hidden fade-up">
+            <div
+              class="portfolio-images columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4"
+            ></div>
+          </div>
+
+          <!-- Motion Graphic -->
+          <div id="tab-motion" class="tab-content hidden fade-up">
+            <div
+              class="portfolio-videos columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="about"
+      class="min-h-screen bg-gradient-to-b from-neutral-900 to-black text-white px-6 py-16 md:py-24 flex flex-col items-center justify-center"
+    >
+      <!-- Title -->
+      <div class="text-center mb-16 fade-up">
+        <h2 class="text-4xl font-bold">
+          &lt;About <span class="text-pink-500">Me</span>/&gt;
+        </h2>
+        <p class="text-gray-400 mt-2">Maybe I know</p>
+      </div>
+
+      <!-- Konten utama -->
+      <div
+        class="max-w-6xl w-full flex flex-col md:flex-row items-center justify-center gap-16 mx-auto md:translate-x-8 fade-up"
+      >
+        <!-- Kiri: Teks -->
+        <div
+          class="md:w-1/2 space-y-6 text-center md:text-left order-2 md:order-1"
+        >
+          <h1 class="text-4xl font-extrabold">Who is nkz?</h1>
+
+          <p class="text-gray-300 leading-relaxed">
+            Hi, I’m Farkhan—though you can call me nkz, Enka, Jet, Kajet,
+            Nakzuwu, or just about anything (I have plenty of nicknames). I’m 21
+            years old and passionate about gaming, design, and programming.
+          </p>
+
+          <p class="text-gray-300 leading-relaxed">
+            I’ve spent the last 4–5 years honing my skills in design and 2 years
+            in programming, working with tools like Photoshop, After Effects,
+            Premiere Pro, Photopea, and VSCode. I also create shitposting
+            content on Instagram, often featuring my own designs with a humorous
+            twist.
+          </p>
+
+          <p class="text-gray-300 leading-relaxed">
+            Outside of work, I'm an anime enthusiast, especially romance series—
+            Megumi Katou is my favorite character. I love combining creativity
+            with technical skills to create engaging and polished projects.
+          </p>
+        </div>
+
+        <!-- Kanan: Gambar / Logo -->
+        <div class="md:w-1/2 flex justify-center order-1 md:order-2">
+          <div
+            class="relative w-64 h-64 rounded-full flex items-center justify-center bg-gradient-to-b from-neutral-800 to-neutral-900 shadow-2xl border border-gray-600"
+          >
+            <img
+              src="assets/images/pp 1.png"
+              alt="nkz logo"
+              class="w-full h-full object-cover rounded-full"
+            />
+            <div
+              class="absolute inset-0 rounded-full bg-gradient-to-b from-transparent to-black/40 pointer-events-none"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="social"
+      class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-neutral-900 to-black text-white px-6 py-16 md:py-24 font-mono"
+    >
+      <!-- Title -->
+      <div class="text-center mb-16 fade-up">
+        <h2 class="text-4xl font-bold">
+          &lt;My <span class="text-pink-500">Social</span>/&gt;
+        </h2>
+        <p class="text-gray-400 mt-2">Maybe I know</p>
+      </div>
+      <!-- Terminal container -->
+      <div
+        class="bg-[#1e1e1e] rounded-lg border border-[#2e2e2e] shadow-2xl w-100 max-w-5xl overflow-hidden fade-up"
+      >
+        <!-- Powerlevel10k Top Bar -->
+        <div class="bg-[#1a1a1a] text-sm text-gray-300">
+          <pre
+            class="leading-snug whitespace-pre-wrap px-4 py-2"
+          ><span class="text-pink-400">Terminal - nkzw@nkzw:-/Portfolio</span>
+      </pre>
+        </div>
+        <pre class="leading-snug whitespace-pre-wrap px-4 py-2">
+╭─░▒▓ <span class="text-blue-400"></span>  <span class="text-yellow-400"> ~/Project</span> ······························· <span class="text-green-400">✔</span>  <span class="text-purple-400">05:29:25 PM </span> ▓▒░─╮
+╰─ <span class="text-pink-400">nkzfetch</span>                                                                  ─╯</pre>
+        <!-- Content -->
+        <div
+          class="flex flex-col md:flex-row text-sm p-6 md:space-x-10 space-y-1 md:space-y-0"
+        >
+          <!-- Left: ASCII Logo -->
+          <div
+            class="text-pink-400 leading-4 whitespace-pre text-xs md:text-sm fade-up"
+          >
+            <pre>
+               ++                             
+             ++++       +++++                  
+            +++++    +++++++++                 
+           ++++++   +++= ++++++                
+           ++++++ +++     +++++                
+          ++++++++++      +++++                
+         ++++++++++       +++++                
+        +++ +++++++++ +++ +++++                
+      ++++  +++++ +++ +++ +++++       +++      
+      ++    +++++ +++ +++ +++++     ++++       
+            +++++ +++ +++ +++++    ++++        
+            +++++ +++ +++++++++++++++          
+            +++++  +      +++++++++            
+            +++++           +++                
+            +++++                             
+</pre
+            >
+          </div>
+
+          <!-- Right: Neofetch Info -->
+          <div class="text-gray-200 space-y-1 font-mono text-sm fade-up">
+            <p class="text-green-400">nkzw@nkzw</p>
+            <p class="text-gray-400">-----------------</p>
+
+            <p>
+              <span class="text-pink-400 fade-up">Instagram</span>:
+              <a
+                href="https://instagram.com/nkzdzn"
+                target="_blank"
+                class="text-gray-300 hover:text-pink-400"
+                >@nkzdzn</a
+              >
+            </p>
+            <p>
+              <span class="text-yellow-400 fade-up">GitHub</span>:
+              <a
+                href="https://github.com/nakzuwu"
+                target="_blank"
+                class="text-gray-300 hover:text-yellow-400"
+                >@nakzuwu</a
+              >
+            </p>
+            <p>
+              <span class="text-blue-400 fade-up">Facebook</span>:
+              <a
+                href="https://facebook.com/nakzuwu.nkz"
+                target="_blank"
+                class="text-gray-300 hover:text-blue-400"
+                >nakzuwu nkz</a
+              >
+            </p>
+            <p>
+              <span class="text-red-500 fade-up">YouTube</span>:
+              <a
+                href="https://youtube.com/@nakzuwu"
+                target="_blank"
+                class="text-gray-300 hover:text-red-500"
+                >@nakzuwu</a
+              >
+            </p>
+            <p>
+              <span class="text-indigo-400 fade-up">Discord</span>:
+              <span class="text-gray-300 fade-up">nkzw</span>
+            </p>
+            <p>
+              <span class="text-cyan-400">X (Twitter)</span>:
+              <a
+                href="https://x.com/nakzuwu"
+                target="_blank"
+                class="text-gray-300 hover:text-cyan-400"
+                >@nakzuwu</a
+              >
+            </p>
+            <p>
+              <span class="text-green-400">More Info</span>:
+              <a
+                href="https://linktr.ee/nakzuwu"
+                target="_blank"
+                class="text-gray-300 hover:text-cyan-400"
+                >linktr.ee/nakzuwu</a
+              >
+            </p>
+
+            <p class="text-gray-400">-----------------</p>
+            <p><span class="text-green-400">Shell</span>: zsh 5.9</p>
+            <p><span class="text-purple-400">Uptime</span>: Always online 🌐</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <p class="text-gray-500 text-sm mt-10">
+         <span class="text-pink-400">nkz@2025</span> 
+      </p>
+    </section>
+    <script src="script.js"></script>
+    \
+    <script>
+      // Animasi fade-up
+      document.addEventListener("DOMContentLoaded", function () {
+        const fadeElements = document.querySelectorAll(".fade-up");
+
+        const fadeInOnScroll = function () {
+          fadeElements.forEach((element) => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementVisible = 150;
+
+            if (elementTop < window.innerHeight - elementVisible) {
+              element.classList.add("visible");
+            }
+          });
+        };
+
+        // Jalankan sekali saat halaman dimuat
+        fadeInOnScroll();
+
+        // Jalankan setiap kali scroll
+        window.addEventListener("scroll", fadeInOnScroll);
+      });
+
+      const words = [
+        "nakzuwu",
+        "nkz",
+        "nkj",
+        "enka",
+        "kajet",
+        "enkajet!",
+        "naklele",
+        "lele",
+      ];
+      const wordEl = document.getElementById("changing-word");
+      let index = 0;
+      let animating = false;
+
+      function changeWord() {
+        if (animating) return;
+        animating = true;
+
+        // animasi keluar
+        wordEl.style.animation =
+          "slideOut 0.6s cubic-bezier(0.45, 0, 0.55, 1) forwards";
+
+        setTimeout(() => {
+          // ganti teks di tengah transisi
+          index = (index + 1) % words.length;
+          wordEl.textContent = words[index];
+
+          // animasi masuk
+          wordEl.style.animation =
+            "slideIn 0.6s cubic-bezier(0.45, 0, 0.55, 1) forwards";
+
+          // reset animating setelah animasi selesai
+          setTimeout(() => (animating = false), 600);
+        }, 600);
+      }
+
+      // 🔥 Langsung jalankan animasi pertama saat halaman selesai dimuat
+      window.addEventListener("load", () => {
+        changeWord(); // animasi langsung mulai
+        setInterval(changeWord, 2200); // lanjut looping
+      });
+    </script>
+  </body>
+</html>
