@@ -1,79 +1,370 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio nkz</title>
+    <title>nkzw</title>
     <script src="https://cdn.tailwindcss.com"></script>
-
+    <!-- Favicon Hitam Putih -->
+    <link rel="icon" href="assets/images/nakzuwu.png" type="image/png" />
     <!-- Devicon CDN -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
     />
 
-    <!-- Custom Style -->
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body
-    class="bg-gradient-to-b from-black via-gray-900 to-gray-800 relative text-white min-h-screen flex flex-col"
-  >
-    <!-- Pink blobs -->
+    <!-- Custom minimal style — no rounded, monochrome, unique section backgrounds -->
+    <style>
+      /* ---------- MODERN BLACK & WHITE · UNIQUE BG PER SECTION ---------- */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: #000000;
+        color: #ffffff;
+        font-family:
+          "Inter",
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+      }
+      /* remove all rounded corners everywhere */
+      *,
+      *::before,
+      *::after {
+        border-radius: 0 !important;
+      }
 
+      /* smooth fade - muncul saat visible, fade out saat tidak visible */
+      /* smooth fade - muncul saat visible, fade out saat tidak visible */
+      .fade-up {
+        opacity: 0;
+        transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        will-change: opacity;
+      }
+      .fade-up.visible {
+        opacity: 1;
+      }
+
+      /* slide animation for changing word */
+      @keyframes slideOut {
+        0% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(30px);
+          opacity: 0;
+        }
+      }
+      @keyframes slideIn {
+        0% {
+          transform: translateY(-30px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      /* ----- monochrome skills style (forced dark) ----- */
+      .skill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        font-weight: 500;
+        background: #1e1e1e !important;
+        color: white !important;
+        border: 1px solid #333;
+        box-shadow: none;
+        transition: all 0.2s ease;
+        font-size: 0.95rem;
+        letter-spacing: -0.01em;
+      }
+      .skill i {
+        font-size: 1.25rem;
+        color: #ccc;
+        filter: grayscale(100%) brightness(1.2);
+      }
+      .skill:hover {
+        background: #2a2a2a !important;
+        border-color: #777;
+      }
+
+      /* ----- tabs: sharp & monochrome ----- */
+      .tab-btn {
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid transparent;
+        color: #aaa;
+        font-weight: 600;
+        transition: all 0.15s;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-size: 0.85rem;
+      }
+      .tab-btn.active-tab,
+      .tab-btn.text-white {
+        color: #ffffff !important;
+        border-bottom: 2px solid #ffffff !important;
+      }
+      .tab-btn:hover {
+        color: #ffffff;
+      }
+
+      /* ----- repo cards, images, video containers : no round, mono ----- */
+      .portfolio-repos > div {
+        background: #121212;
+        border: 1px solid #2b2b2b;
+        transition: all 0.2s;
+        box-shadow: none;
+      }
+      .portfolio-repos > div:hover {
+        background: #1b1b1b;
+        border-color: #5a5a5a;
+        transform: translateY(-2px);
+      }
+      .portfolio-images img,
+      .portfolio-videos video {
+        border: 1px solid #2a2a2a;
+        background: #0a0a0a;
+        filter: grayscale(100%);
+        transition:
+          filter 0.3s,
+          border-color 0.2s,
+          transform 0.2s;
+      }
+      .portfolio-images img:hover,
+      .portfolio-videos video:hover {
+        filter: grayscale(30%);
+        border-color: #777;
+        transform: scale(1.02);
+      }
+
+      /* force all pink/green/blue to white/gray */
+      .text-pink-500,
+      .text-pink-400,
+      .text-pink-600,
+      .hover\:text-pink-500,
+      .hover\:text-pink-400,
+      .text-yellow-400,
+      .text-blue-400,
+      .text-green-400,
+      .text-purple-400,
+      .text-red-500,
+      .text-indigo-400,
+      .text-cyan-400 {
+        color: #dddddd !important;
+      }
+      .bg-pink-500,
+      .bg-pink-600,
+      .hover\:bg-pink-600,
+      .hover\:bg-pink-700 {
+        background-color: #2a2a2a !important;
+      }
+      .border-pink-400 {
+        border-color: #555 !important;
+      }
+
+      /* ----- UNIQUE SECTION BACKGROUNDS (black & white patterns) ----- */
+      /* HOME: clean dark, you will replace with your own photo later — keeping subtle grain */
+      #home {
+        background: #0a0a0a;
+        position: relative;
+        z-index: 1;
+      }
+      /* optional overlay to keep shapes visible if you add photo */
+      #home::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+          45deg,
+          rgba(255, 255, 255, 0.01) 0px,
+          rgba(255, 255, 255, 0.01) 2px,
+          transparent 2px,
+          transparent 8px
+        );
+        pointer-events: none;
+        z-index: 2;
+      }
+      /* make hero circles visible over any bg */
+      #home .hero-circle,
+      #home > .absolute {
+        background: #1c1c1c !important;
+        border: 1px solid #3a3a3a;
+        opacity: 0.45;
+        z-index: 1;
+      }
+
+      /* SKILL: vertical lines pattern */
+      #skill {
+        background: #0c0c0c !important;
+        background-image: repeating-linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.02) 0px,
+          rgba(255, 255, 255, 0.02) 1px,
+          transparent 1px,
+          transparent 20px
+        ) !important;
+        position: relative;
+      }
+
+      /* PORTFOLIO: diagonal fine grid */
+      #portfolio {
+        background: #080808 !important;
+        background-image:
+          repeating-linear-gradient(
+            45deg,
+            rgba(255, 255, 255, 0.02) 0px,
+            rgba(255, 255, 255, 0.02) 1px,
+            transparent 1px,
+            transparent 15px
+          ),
+          repeating-linear-gradient(
+            -45deg,
+            rgba(255, 255, 255, 0.02) 0px,
+            rgba(255, 255, 255, 0.02) 1px,
+            transparent 1px,
+            transparent 15px
+          ) !important;
+      }
+
+      /* ABOUT: subtle dot pattern */
+      #about {
+        background: #111111 !important;
+        background-image: radial-gradient(
+          rgba(255, 255, 255, 0.03) 1px,
+          transparent 1px
+        ) !important;
+        background-size: 24px 24px !important;
+      }
+
+      /* SOCIAL: horizontal line texture (like terminal scanlines) */
+      #social {
+        background: #0a0a0a !important;
+        background-image: repeating-linear-gradient(
+          0deg,
+          rgba(255, 255, 255, 0.02) 0px,
+          rgba(255, 255, 255, 0.02) 1px,
+          transparent 1px,
+          transparent 6px
+        ) !important;
+      }
+
+      /* nav, footer etc */
+      nav {
+        background: #000000cc !important;
+        backdrop-filter: blur(4px);
+        border-bottom: 1px solid #2a2a2a;
+      }
+
+      /* stat images grayscale */
+      .mt-10 img {
+        filter: grayscale(100%);
+        border: 1px solid #333;
+      }
+
+      /* profile border sharp */
+      .border-4 {
+        border: 2px solid #3a3a3a !important;
+      }
+
+      /* terminal mono */
+      .bg-\[\#1e1e1e\],
+      .bg-\[\#1a1a1a\],
+      .border-\[\#2e2e2e\] {
+        border-color: #333 !important;
+      }
+
+      /* devicon grayscale */
+      i[class*="devicon"] {
+        filter: grayscale(100%) brightness(1.3);
+      }
+
+      /* remove all gradient backgrounds forcefully */
+      .bg-gradient-to-b,
+      .bg-gradient-to-tr,
+      .from-black,
+      .via-gray-900,
+      .to-gray-800,
+      .from-neutral-900,
+      .to-black,
+      .from-neutral-800,
+      .to-neutral-900 {
+        background: transparent !important;
+      }
+
+      /* additional fix: inline style home bg */
+      section[id="home"][style] {
+        background: #0a0a0a !important;
+      }
+    </style>
+  </head>
+  <body class="bg-black text-white min-h-screen flex flex-col">
+    <!-- NAVIGATION (unchanged) -->
     <nav
-      class="sticky top-0 flex flex-wrap justify-center items-center gap-x-10 gap-y-2 py-6 z-50 bg-transparent text-white backdrop-blur-sm text-base"
+      class="sticky top-0 flex flex-wrap justify-center items-center gap-x-10 gap-y-2 py-6 z-50 bg-black/90 backdrop-blur-sm text-white text-base border-b border-[#2a2a2a]"
     >
-      <a href="#home" class="hover:text-pink-500 transition-colors">Home</a>
-      <a href="#skill" class="hover:text-pink-500 transition-colors">Skill</a>
-      <a href="#portfolio" class="hover:text-pink-500 transition-colors"
+      <a href="#home" class="hover:text-white transition-colors">Home</a>
+      <a href="#skill" class="hover:text-white transition-colors">Skill</a>
+      <a href="#portfolio" class="hover:text-white transition-colors"
         >Portfolio</a
       >
-      <a href="#about" class="hover:text-pink-500 transition-colors"
-        >About Me</a
-      >
-      <a href="#social" class="hover:text-pink-500 transition-colors">Social</a>
+      <a href="#about" class="hover:text-white transition-colors">About Me</a>
+      <a href="#social" class="hover:text-white transition-colors">Social</a>
     </nav>
 
+    <!-- ========== HOME ========== -->
     <section
       id="home"
-      class="relative w-full h-screen overflow-hidden flex items-center justify-center -mt-[88px]"
-      style="
-        background: linear-gradient(
-            to top,
-            rgba(235, 68, 154, 0.8) 0%,
-            rgba(235, 68, 154, 0.3) 25%,
-            rgba(235, 68, 154, 0.1) 50%,
-            rgba(235, 68, 154, 0) 75%
-          ),
-          #111111;
-      "
+      class="relative w-full h-screen flex items-center justify-center overflow-hidden"
     >
-      <!-- Pink blur circles -->
+      <!-- Background Image dengan opacity 30% -->
+      <img
+        src="assets/images/background.png"
+        alt="Background"
+        class="absolute inset-0 w-full h-full object-cover z-0 opacity-30"
+      />
+
+      <!-- Overlay hitam untuk memperkuat kesan gelap (opsional) -->
+      <div class="absolute inset-0 bg-black opacity-20 z-0"></div>
+
+      <!-- Dark Shapes -->
       <div
-        class="hero-circle absolute bottom-[-200px] left-[-100px] w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-[#EB449A] to-[#D53266] opacity-90 z-0 md:block blur-[12px] fade-up"
+        class="absolute bottom-[-200px] left-[-100px] w-[400px] h-[400px] bg-[#1c1c1c] opacity-40 z-0 border border-[#2a2a2a]"
       ></div>
       <div
-        class="hero-circle absolute top-[-150px] right-[-150px] w-[350px] h-[350px] rounded-full bg-gradient-to-tr from-[#EB449A] to-[#D53266] opacity-90 z-0 md:block blur-[10px] fade-up"
+        class="absolute top-[-150px] right-[-150px] w-[350px] h-[350px] bg-[#1c1c1c] opacity-40 z-0 border border-[#2a2a2a]"
       ></div>
       <div
-        class="hero-circle absolute top-[250px] right-[80px] w-[150px] h-[150px] rounded-full bg-gradient-to-tr from-[#EB449A] to-[#D53266] opacity-90 z-0 md:block blur-[3px] fade-up"
+        class="absolute top-[250px] right-[80px] w-[150px] h-[150px] bg-[#1c1c1c] opacity-40 z-0 border border-[#2a2a2a]"
       ></div>
       <div
-        class="absolute bottom-[200px] left-[100px] w-[150px] h-[150px] rounded-full bg-gradient-to-tr from-[#EB449A] to-[#D53266] opacity-90 z-0 md:block blur-[5px] fade-up"
+        class="absolute bottom-[200px] left-[100px] w-[150px] h-[150px] bg-[#1c1c1c] opacity-40 z-0 border border-[#2a2a2a]"
       ></div>
 
-      <!-- Content -->
+      <!-- Content - Diperbaiki dengan position dan transform -->
       <div
-        class="relative z-10 flex flex-col md:flex-row items-center gap-8 px-6 md:px-20 fade-up"
+        class="relative z-10 flex flex-col md:flex-row items-center gap-8 px-6 md:px-20 animate-fadeUp -mt-20 md:-mt-32"
       >
         <!-- Profile Image -->
         <div
-          class="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-white shadow-lg"
+          class="w-40 h-40 md:w-48 md:h-48 overflow-hidden border-2 border-[#3a3a3a] bg-[#111]"
         >
           <img
-            src="assets/images/Ellipse 1.png"
+            src="assets/images/pp.jpg"
             alt="Profile"
-            class="w-full h-full object-cover"
+            class="w-full h-full object-cover grayscale contrast-125"
           />
         </div>
 
@@ -86,257 +377,255 @@
             I am
             <span
               id="changing-word"
-              class="text-pink-500 inline-block relative overflow-hidden align-middle translate-y-[-0.1em]"
-              >nkj
+              class="text-white inline-block relative overflow-hidden align-middle translate-y-[-0.1em]"
+            >
+              nkj
             </span>
           </h1>
-          <p class="mt-4 text-gray-300 text-sm md:text-lg">
+          <p class="mt-4 text-gray-400 text-sm md:text-lg">
             Design Graphic | Motion Graphic | Web Developer | Linux
             enthusiast<br />
             Silence isn’t stupidity, it’s hunger.
           </p>
         </div>
       </div>
+
+      <!-- Animasi Fade Up -->
+      <style>
+        @keyframes fadeUp {
+          0% {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-fadeUp {
+          animation: fadeUp 1s ease-out forwards;
+        }
+      </style>
     </section>
 
+    <!-- ========== SKILL ========== (vertical lines) -->
     <section
       id="skill"
-      class="relative w-full bg-[#181818] text-white py-20 overflow-hidden"
+      class="relative w-full text-white py-20 overflow-hidden border-t border-[#222]"
     >
-      <!-- Title -->
       <div class="text-center mb-12 fade-up">
-        <h2 class="text-4xl font-bold">
-          &lt;My <span class="text-pink-500">Skills</span>/&gt;
+        <h2 class="text-4xl font-bold text-white">
+          &lt;My <span class="text-white">Skills</span>/&gt;
         </h2>
-        <p class="text-gray-400 mt-2">Maybe I know</p>
+        <p class="text-gray-500 mt-2">Maybe I know</p>
       </div>
-      <!-- Container -->
+      <!-- container: infinite rows -->
       <div class="flex flex-col space-y-8 overflow-hidden fade-up">
         <!-- Row 1: Languages -->
         <div class="flex flex-nowrap space-x-3 overflow-hidden">
           <div id="row1" class="flex space-x-3 will-change-transform">
             <div class="flex space-x-3 min-w-full">
-              <span class="skill bg-[#0078D7]"
-                ><i class="devicon-dart-plain"></i>Dart</span
-              >
-              <span class="skill bg-[#f89820]"
-                ><i class="devicon-java-plain"></i>Java</span
-              >
-              <span class="skill bg-[#f7df1e] text-black"
+              <span class="skill"><i class="devicon-dart-plain"></i>Dart</span>
+              <span class="skill"><i class="devicon-java-plain"></i>Java</span>
+              <span class="skill"
                 ><i class="devicon-javascript-plain"></i>JavaScript</span
               >
-              <span class="skill bg-[#e34c26]"
+              <span class="skill"
                 ><i class="devicon-html5-plain"></i>HTML5</span
               >
-              <span class="skill bg-[#777BB4]"
-                ><i class="devicon-php-plain"></i>PHP</span
-              >
-              <span class="skill bg-[#3776AB]"
+              <span class="skill"><i class="devicon-php-plain"></i>PHP</span>
+              <span class="skill"
                 ><i class="devicon-python-plain"></i>Python</span
               >
-              <span class="skill bg-[#F38020]"
+              <span class="skill"
                 ><i class="devicon-cloudflare-plain"></i>Cloudflare</span
               >
-              <span class="skill bg-[#039BE5]"
+              <span class="skill"
                 ><i class="devicon-firebase-plain"></i>Firebase</span
               >
-              <span class="skill bg-[#0078D7]"
-                ><i class="devicon-dart-plain"></i>Dart</span
-              >
-              <span class="skill bg-[#f89820]"
-                ><i class="devicon-java-plain"></i>Java</span
-              >
-              <span class="skill bg-[#f7df1e] text-black"
+              <span class="skill"><i class="devicon-dart-plain"></i>Dart</span>
+              <span class="skill"><i class="devicon-java-plain"></i>Java</span>
+              <span class="skill"
                 ><i class="devicon-javascript-plain"></i>JavaScript</span
               >
-              <span class="skill bg-[#e34c26]"
+              <span class="skill"
                 ><i class="devicon-html5-plain"></i>HTML5</span
               >
-              <span class="skill bg-[#777BB4]"
-                ><i class="devicon-php-plain"></i>PHP</span
-              >
-              <span class="skill bg-[#3776AB]"
+              <span class="skill"><i class="devicon-php-plain"></i>PHP</span>
+              <span class="skill"
                 ><i class="devicon-python-plain"></i>Python</span
               >
-              <span class="skill bg-[#F38020]"
+              <span class="skill"
                 ><i class="devicon-cloudflare-plain"></i>Cloudflare</span
               >
-              <span class="skill bg-[#039BE5]"
+              <span class="skill"
                 ><i class="devicon-firebase-plain"></i>Firebase</span
               >
-              <span class="skill bg-[#0078D7]"
-                ><i class="devicon-dart-plain"></i>Dart</span
-              >
-              <span class="skill bg-[#f89820]"
-                ><i class="devicon-java-plain"></i>Java</span
-              >
-              <span class="skill bg-[#f7df1e] text-black"
+              <span class="skill"><i class="devicon-dart-plain"></i>Dart</span>
+              <span class="skill"><i class="devicon-java-plain"></i>Java</span>
+              <span class="skill"
                 ><i class="devicon-javascript-plain"></i>JavaScript</span
               >
-              <span class="skill bg-[#e34c26]"
+              <span class="skill"
                 ><i class="devicon-html5-plain"></i>HTML5</span
               >
-              <span class="skill bg-[#777BB4]"
-                ><i class="devicon-php-plain"></i>PHP</span
-              >
-              <span class="skill bg-[#3776AB]"
+              <span class="skill"><i class="devicon-php-plain"></i>PHP</span>
+              <span class="skill"
                 ><i class="devicon-python-plain"></i>Python</span
               >
-              <span class="skill bg-[#F38020]"
+              <span class="skill"
                 ><i class="devicon-cloudflare-plain"></i>Cloudflare</span
               >
-              <span class="skill bg-[#039BE5]"
+              <span class="skill"
                 ><i class="devicon-firebase-plain"></i>Firebase</span
               >
             </div>
           </div>
         </div>
-
-        <!-- Row 2: Frameworks & Tools -->
+        <!-- Row 2: Frameworks -->
         <div class="flex flex-nowrap space-x-3 overflow-hidden">
           <div id="row2" class="flex space-x-3 will-change-transform">
             <div class="flex space-x-3 min-w-full">
-              <span class="skill bg-[#F05340]"
+              <span class="skill"
                 ><i class="devicon-laravel-plain"></i>Laravel</span
               >
-              <span class="skill bg-[#353535]"
+              <span class="skill"
                 ><i class="devicon-flask-original"></i>Flask</span
               >
-              <span class="skill bg-[#009688]"
+              <span class="skill"
                 ><i class="devicon-fastapi-plain"></i>FastAPI</span
               >
-              <span class="skill bg-[#E44D26]"
+              <span class="skill"
                 ><i class="devicon-codeigniter-plain"></i>CodeIgniter</span
               >
-              <span class="skill bg-[#02569B]"
+              <span class="skill"
                 ><i class="devicon-flutter-plain"></i>Flutter</span
               >
-              <span class="skill bg-[#000000]"
+              <span class="skill"
                 ><i class="devicon-nextjs-original"></i>Next.js</span
               >
-              <span class="skill bg-[#61DAFB] text-black"
+              <span class="skill"
                 ><i class="devicon-react-original"></i>React</span
               >
-              <span class="skill bg-[#009639]"
+              <span class="skill"
                 ><i class="devicon-nginx-original"></i>Nginx</span
               >
-              <span class="skill bg-[#F05340]"
+              <span class="skill"
                 ><i class="devicon-laravel-plain"></i>Laravel</span
               >
-              <span class="skill bg-[#353535]"
+              <span class="skill"
                 ><i class="devicon-flask-original"></i>Flask</span
               >
-              <span class="skill bg-[#009688]"
+              <span class="skill"
                 ><i class="devicon-fastapi-plain"></i>FastAPI</span
               >
-              <span class="skill bg-[#E44D26]"
+              <span class="skill"
                 ><i class="devicon-codeigniter-plain"></i>CodeIgniter</span
               >
-              <span class="skill bg-[#02569B]"
+              <span class="skill"
                 ><i class="devicon-flutter-plain"></i>Flutter</span
               >
-              <span class="skill bg-[#000000]"
+              <span class="skill"
                 ><i class="devicon-nextjs-original"></i>Next.js</span
               >
-              <span class="skill bg-[#61DAFB] text-black"
+              <span class="skill"
                 ><i class="devicon-react-original"></i>React</span
               >
-              <span class="skill bg-[#009639]"
+              <span class="skill"
                 ><i class="devicon-nginx-original"></i>Nginx</span
               >
-              <span class="skill bg-[#F05340]"
+              <span class="skill"
                 ><i class="devicon-laravel-plain"></i>Laravel</span
               >
-              <span class="skill bg-[#353535]"
+              <span class="skill"
                 ><i class="devicon-flask-original"></i>Flask</span
               >
-              <span class="skill bg-[#009688]"
+              <span class="skill"
                 ><i class="devicon-fastapi-plain"></i>FastAPI</span
               >
-              <span class="skill bg-[#E44D26]"
+              <span class="skill"
                 ><i class="devicon-codeigniter-plain"></i>CodeIgniter</span
               >
-              <span class="skill bg-[#02569B]"
+              <span class="skill"
                 ><i class="devicon-flutter-plain"></i>Flutter</span
               >
-              <span class="skill bg-[#000000]"
+              <span class="skill"
                 ><i class="devicon-nextjs-original"></i>Next.js</span
               >
-              <span class="skill bg-[#61DAFB] text-black"
+              <span class="skill"
                 ><i class="devicon-react-original"></i>React</span
               >
-              <span class="skill bg-[#009639]"
+              <span class="skill"
                 ><i class="devicon-nginx-original"></i>Nginx</span
               >
             </div>
           </div>
         </div>
-
-        <!-- Row 3: Design Apps -->
+        <!-- Row 3: Design -->
         <div class="flex flex-nowrap space-x-3 overflow-hidden">
           <div id="row3" class="flex space-x-3 will-change-transform">
             <div class="flex space-x-3 min-w-full">
-              <span class="skill bg-[#FF0000]"
+              <span class="skill"
                 ><i class="devicon-adobe-plain"></i>Adobe</span
               >
-              <span class="skill bg-[#FF9A00]"
+              <span class="skill"
                 ><i class="devicon-illustrator-plain"></i>Illustrator</span
               >
-              <span class="skill bg-[#31A8FF]"
+              <span class="skill"
                 ><i class="devicon-photoshop-plain"></i>Photoshop</span
               >
-              <span class="skill bg-[#9999FF]"
+              <span class="skill"
                 ><i class="devicon-aftereffects-plain"></i>After Effects</span
               >
-              <span class="skill bg-[#9A4CFF]"
+              <span class="skill"
                 ><i class="devicon-premierepro-plain"></i>Premiere Pro</span
               >
-              <span class="skill bg-[#F24E1E]"
+              <span class="skill"
                 ><i class="devicon-figma-plain"></i>Figma</span
               >
-              <span class="skill bg-[#9A4CFF]"
+              <span class="skill"
                 ><i class="devicon-lightroom-plain"></i>Lightroom</span
               >
-              <span class="skill bg-[#FF0000]"
+              <span class="skill"
                 ><i class="devicon-adobe-plain"></i>Adobe</span
               >
-              <span class="skill bg-[#FF9A00]"
+              <span class="skill"
                 ><i class="devicon-illustrator-plain"></i>Illustrator</span
               >
-              <span class="skill bg-[#31A8FF]"
+              <span class="skill"
                 ><i class="devicon-photoshop-plain"></i>Photoshop</span
               >
-              <span class="skill bg-[#9999FF]"
+              <span class="skill"
                 ><i class="devicon-aftereffects-plain"></i>After Effects</span
               >
-              <span class="skill bg-[#9A4CFF]"
+              <span class="skill"
                 ><i class="devicon-premierepro-plain"></i>Premiere Pro</span
               >
-              <span class="skill bg-[#F24E1E]"
+              <span class="skill"
                 ><i class="devicon-figma-plain"></i>Figma</span
               >
-              <span class="skill bg-[#9A4CFF]"
+              <span class="skill"
                 ><i class="devicon-lightroom-plain"></i>Lightroom</span
               >
-              <span class="skill bg-[#FF0000]"
+              <span class="skill"
                 ><i class="devicon-adobe-plain"></i>Adobe</span
               >
-              <span class="skill bg-[#FF9A00]"
+              <span class="skill"
                 ><i class="devicon-illustrator-plain"></i>Illustrator</span
               >
-              <span class="skill bg-[#31A8FF]"
+              <span class="skill"
                 ><i class="devicon-photoshop-plain"></i>Photoshop</span
               >
-              <span class="skill bg-[#9999FF]"
+              <span class="skill"
                 ><i class="devicon-aftereffects-plain"></i>After Effects</span
               >
-              <span class="skill bg-[#9A4CFF]"
+              <span class="skill"
                 ><i class="devicon-premierepro-plain"></i>Premiere Pro</span
               >
-              <span class="skill bg-[#F24E1E]"
+              <span class="skill"
                 ><i class="devicon-figma-plain"></i>Figma</span
               >
-              <span class="skill bg-[#9A4CFF]"
+              <span class="skill"
                 ><i class="devicon-lightroom-plain"></i>Lightroom</span
               >
             </div>
@@ -345,14 +634,14 @@
       </div>
     </section>
 
-    <section id="portfolio" class="bg-[#0f0f0f] text-gray-200 py-16">
+    <!-- ========== PORTFOLIO ========== (diagonal cross grid) -->
+    <section id="portfolio" class="text-gray-200 py-16 border-t border-[#222]">
       <div class="max-w-6xl mx-auto px-6 text-center">
-        <!-- Title -->
         <div class="text-center mb-12 fade-up">
-          <h2 class="text-4xl font-bold">
-            &lt;My <span class="text-pink-500">Portfolio</span>/&gt;
+          <h2 class="text-4xl font-bold text-white">
+            &lt;My <span class="text-white">Portfolio</span>/&gt;
           </h2>
-          <p class="text-gray-400 mt-2">Project i’ve done so far</p>
+          <p class="text-gray-500 mt-2">Project i’ve done so far</p>
         </div>
 
         <!-- Tabs -->
@@ -360,26 +649,25 @@
           class="flex justify-center space-x-4 text-sm font-semibold mb-10 fade-up"
         >
           <button
-            class="tab-btn active-tab text-pink-400 border-b-2 border-pink-400 pb-1 transition-colors duration-300"
+            class="tab-btn active-tab text-white border-b-2 border-white pb-1"
             data-tab="github"
           >
             Github Project
           </button>
           <button
-            class="tab-btn text-gray-400 hover:text-pink-400 transition-colors duration-300"
+            class="tab-btn text-gray-400 hover:text-white transition-colors"
             data-tab="design"
           >
             Design
           </button>
           <button
-            class="tab-btn text-gray-400 hover:text-pink-400 transition-colors duration-300"
+            class="tab-btn text-gray-400 hover:text-white transition-colors"
             data-tab="motion"
           >
             Motion Graphic
           </button>
         </div>
 
-        <!-- Tabs Content -->
         <div class="tab-container fade-up">
           <!-- Github Projects -->
           <div id="tab-github" class="tab-content fade-up">
@@ -387,52 +675,32 @@
               <div
                 class="portfolio-repos grid gap-6 justify-items-center w-full sm:grid-cols-2 md:grid-cols-3 mt-8"
               ></div>
-
-              <!-- Show More Button -->
               <button
                 id="show-more"
-                class="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-lg shadow hidden transition-colors duration-300"
+                class="bg-[#1f1f1f] hover:bg-[#2c2c2c] text-white px-4 py-2 shadow-none border border-[#3f3f3f] hidden transition-colors"
               >
                 Show More
               </button>
-
               <!-- Github Stats -->
               <div class="mt-10 space-y-6 fade-up">
-                <h3 class="text-lg font-semibold">GitHub Stats</h3>
+                <h3 class="text-lg font-semibold text-white">GitHub Stats</h3>
                 <div class="flex flex-wrap justify-center gap-6">
                   <img
-                    src="https://github-readme-stats.vercel.app/api?username=nakzuwu&theme=dark&hide_border=false&include_all_commits=true&count_private=false"
-                    alt="GitHub Stats"
-                    class="rounded-lg shadow-lg"
-                  />
-                  <img
-                    src="https://nirzak-streak-stats.vercel.app/?user=nakzuwu&theme=dark&hide_border=false"
+                    src="https://nirzak-streak-stats.vercel.app/?user=nakzuwu&theme=dark&hide_border=true"
                     alt="GitHub Streak"
-                    class="rounded-lg shadow-lg"
-                  />
-                  <img
-                    src="https://github-readme-stats.vercel.app/api/top-langs/?username=nakzuwu&theme=dark&hide_border=false&layout=compact"
-                    alt="Top Languages"
-                    class="rounded-lg shadow-lg"
-                  />
-                  <img
-                    src="https://github-profile-trophy.vercel.app/?username=nakzuwu&theme=shades-of-purple&no-frame=false&no-bg=true&margin-w=4"
-                    alt="GitHub Trophies"
-                    class="rounded-lg shadow-lg"
+                    class="border border-[#333] grayscale"
                   />
                 </div>
               </div>
             </div>
           </div>
-
-          <!-- Design -->
+          <!-- Design tab -->
           <div id="tab-design" class="tab-content hidden fade-up">
             <div
               class="portfolio-images columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4"
             ></div>
           </div>
-
-          <!-- Motion Graphic -->
+          <!-- Motion tab -->
           <div id="tab-motion" class="tab-content hidden fade-up">
             <div
               class="portfolio-videos columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4"
@@ -442,101 +710,104 @@
       </div>
     </section>
 
+    <!-- ========== ABOUT ========== (dot pattern) -->
     <section
       id="about"
-      class="min-h-screen bg-gradient-to-b from-neutral-900 to-black text-white px-6 py-16 md:py-24 flex flex-col items-center justify-center"
+      class="min-h-screen text-white px-6 py-16 md:py-24 flex flex-col items-center justify-center border-t border-[#222]"
     >
-      <!-- Title -->
       <div class="text-center mb-16 fade-up">
-        <h2 class="text-4xl font-bold">
-          &lt;About <span class="text-pink-500">Me</span>/&gt;
+        <h2 class="text-4xl font-bold text-white">
+          &lt;About <span class="text-white">Me</span>/&gt;
         </h2>
-        <p class="text-gray-400 mt-2">U didn’t know me fr?</p>
+        <p class="text-gray-500 mt-2">U didn’t know me fr?</p>
       </div>
-
-      <!-- Konten utama -->
       <div
         class="max-w-6xl w-full flex flex-col md:flex-row items-center justify-center gap-16 mx-auto md:translate-x-8 fade-up"
       >
-        <!-- Kiri: Teks -->
+        <!-- Dark shapes (formerly pink blobs) — solid, no blur, visible over your future photo -->
+        <div
+          class="hero-circle absolute bottom-[-90px] left-[-100px] w-[400px] h-[400px] bg-[#1c1c1c] opacity-40 -z-10 md:block fade-up border border-[#2a2a2a]"
+        ></div>
+        <div
+          class="hero-circle absolute top-[-150px] right-[-150px] w-[350px] h-[350px] bg-[#1c1c1c] opacity-40 -z-10 md:block fade-up border border-[#2a2a2a]"
+        ></div>
+        <div
+          class="hero-circle absolute top-[250px] right-[80px] w-[150px] h-[150px] bg-[#1c1c1c] opacity-40 -z-10 md:block fade-up border border-[#2a2a2a]"
+        ></div>
+        <div
+          class="absolute bottom-[400px] left-[100px] w-[150px] h-[150px] bg-[#1c1c1c] opacity-40 -z-10 md:block fade-up border border-[#2a2a2a]"
+        ></div>
+
         <div
           class="md:w-1/2 space-y-6 text-center md:text-left order-2 md:order-1"
         >
-          <h1 class="text-4xl font-extrabold">Who is nkz?</h1>
-
-          <p class="text-gray-300 leading-relaxed">
+          <h1 class="text-4xl font-extrabold text-white">Who is nkz?</h1>
+          <p class="text-gray-400 leading-relaxed">
             Hi, I’m Farkhan—though you can call me nkz, Enka, Jet, Kajet,
             Nakzuwu, or just about anything (I have plenty of nicknames). I’m 21
             years old and passionate about gaming, design, and programming.
           </p>
-
-          <p class="text-gray-300 leading-relaxed">
+          <p class="text-gray-400 leading-relaxed">
             I’ve spent the last 4–5 years honing my skills in design and 2 years
             in programming, working with tools like Photoshop, After Effects,
             Premiere Pro, Photopea, and VSCode. I also create shitposting
             content on Instagram, often featuring my own designs with a humorous
             twist.
           </p>
-
-          <p class="text-gray-300 leading-relaxed">
+          <p class="text-gray-400 leading-relaxed">
             Outside of work, I'm an anime enthusiast, especially romance series—
             Megumi Katou is my favorite character. I love combining creativity
             with technical skills to create engaging and polished projects.
           </p>
         </div>
-
-        <!-- Kanan: Gambar / Logo -->
         <div class="md:w-1/2 flex justify-center order-1 md:order-2">
           <div
-            class="relative w-64 h-64 rounded-full flex items-center justify-center bg-gradient-to-b from-neutral-800 to-neutral-900 shadow-2xl border border-gray-600"
+            class="relative w-64 h-64 flex items-center justify-center bg-[#151515] shadow-none border border-[#333]"
           >
             <img
-              src="assets/images/pp 1.png"
+              src="assets/images/nakzuwu.png"
               alt="nkz logo"
-              class="w-full h-full object-cover rounded-full"
+              class="w-full h-full object-cover grayscale contrast-125"
             />
             <div
-              class="absolute inset-0 rounded-full bg-gradient-to-b from-transparent to-black/40 pointer-events-none"
+              class="absolute inset-0 bg-transparent pointer-events-none"
             ></div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ========== SOCIAL ========== (horizontal scanline) -->
     <section
       id="social"
-      class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-neutral-900 to-black text-white px-6 py-16 md:py-24 font-mono"
+      class="min-h-screen flex flex-col items-center justify-center text-white px-6 py-16 md:py-24 font-mono border-t border-[#222]"
     >
-      <!-- Title -->
       <div class="text-center mb-16 fade-up">
-        <h2 class="text-4xl font-bold">
-          &lt;My <span class="text-pink-500">Social</span>/&gt;
+        <h2 class="text-4xl font-bold text-white">
+          &lt;My <span class="text-white">Social</span>/&gt;
         </h2>
-        <p class="text-gray-400 mt-2">
+        <p class="text-gray-500 mt-2">
           no petrick, mayonnaise isn't social media
         </p>
       </div>
-      <!-- Terminal container -->
       <div
-        class="bg-[#1e1e1e] rounded-lg border border-[#2e2e2e] shadow-2xl w-100 max-w-5xl overflow-hidden fade-up"
+        class="bg-[#111] border border-[#2e2e2e] shadow-none w-full max-w-5xl overflow-hidden fade-up"
       >
-        <!-- Powerlevel10k Top Bar -->
-        <div class="bg-[#1a1a1a] text-sm text-gray-300">
+        <div
+          class="bg-[#0a0a0a] text-sm text-gray-300 border-b border-[#2e2e2e]"
+        >
           <pre
             class="leading-snug whitespace-pre-wrap px-4 py-2"
-          ><span class="text-pink-400">Terminal - nkzw@nkzw:-/Portfolio</span>
-      </pre>
+          ><span class="text-gray-400">Terminal - nkzw@nkzw:-/Portfolio</span></pre>
         </div>
-        <pre class="leading-snug whitespace-pre-wrap px-4 py-2">
-╭─░▒▓ <span class="text-blue-400"></span>  <span class="text-yellow-400"> ~/Project</span> ······························· <span class="text-green-400">✔</span>  <span class="text-purple-400">05:29:25 PM </span> ▓▒░─╮
-╰─ <span class="text-pink-400">nkzfetch</span>                                                                  ─╯</pre>
-        <!-- Content -->
+        <pre class="leading-snug whitespace-pre-wrap px-4 py-2 text-gray-300">
+╭─░▒▓ <span class="text-gray-400"></span>  <span class="text-gray-400"> ~/Project</span> ················································· <span class="text-gray-400">✔</span>  <span class="text-gray-400">05:29:25 PM </span> ▓▒░─╮
+╰─ <span class="text-gray-300">nkzfetch</span>                                                                                    ──╯</pre>
         <div
           class="flex flex-col md:flex-row text-sm p-6 md:space-x-10 space-y-1 md:space-y-0"
         >
-          <!-- Left: ASCII Logo -->
           <div
-            class="text-pink-400 leading-4 whitespace-pre text-xs md:text-sm fade-up"
+            class="text-gray-400 leading-4 whitespace-pre text-xs md:text-sm fade-up"
           >
             <pre>
                ++                             
@@ -557,97 +828,99 @@
 </pre
             >
           </div>
-
-          <!-- Right: Neofetch Info -->
-          <div class="text-gray-200 space-y-1 font-mono text-sm fade-up">
-            <p class="text-green-400">nkzw@nkzw</p>
-            <p class="text-gray-400">-----------------</p>
-
+          <div
+            class="text-gray-300 space-y-1 font-mono text-sm fade-up md:ml-12 lg:ml-24"
+          >
+            <p class="text-white">nkzw@nkzw</p>
+            <p class="text-gray-500">-----------------</p>
             <p>
-              <span class="text-pink-400 fade-up">Instagram</span>:
+              <span class="text-gray-400">Instagram</span>:
               <a
                 href="https://instagram.com/nkzdzn"
                 target="_blank"
-                class="text-gray-300 hover:text-pink-400"
+                class="text-gray-400 hover:text-white"
                 >@nkzdzn</a
               >
             </p>
             <p>
-              <span class="text-yellow-400 fade-up">GitHub</span>:
+              <span class="text-gray-400">GitHub</span>:
               <a
                 href="https://github.com/nakzuwu"
                 target="_blank"
-                class="text-gray-300 hover:text-yellow-400"
+                class="text-gray-400 hover:text-white"
                 >@nakzuwu</a
               >
             </p>
             <p>
-              <span class="text-blue-400 fade-up">Facebook</span>:
+              <span class="text-gray-400">Facebook</span>:
               <a
                 href="https://facebook.com/nakzuwu.nkz"
                 target="_blank"
-                class="text-gray-300 hover:text-blue-400"
+                class="text-gray-400 hover:text-white"
                 >nakzuwu nkz</a
               >
             </p>
             <p>
-              <span class="text-red-500 fade-up">YouTube</span>:
+              <span class="text-gray-400">YouTube</span>:
               <a
                 href="https://youtube.com/@nakzuwu"
                 target="_blank"
-                class="text-gray-300 hover:text-red-500"
+                class="text-gray-400 hover:text-white"
                 >@nakzuwu</a
               >
             </p>
             <p>
-              <span class="text-indigo-400 fade-up">Discord</span>:
-              <span class="text-gray-300 fade-up">nkzw</span>
+              <span class="text-gray-400">Discord</span>:
+              <span class="text-gray-400">nkzw</span>
             </p>
             <p>
-              <span class="text-cyan-400">X (Twitter)</span>:
+              <span class="text-gray-400">X (Twitter)</span>:
               <a
                 href="https://x.com/nakzuwu"
                 target="_blank"
-                class="text-gray-300 hover:text-cyan-400"
+                class="text-gray-400 hover:text-white"
                 >@nakzuwu</a
               >
             </p>
             <p>
-              <span class="text-green-400">More Info</span>:
+              <span class="text-gray-400">More Info</span>:
               <a
                 href="https://linktr.ee/nakzuwu"
                 target="_blank"
-                class="text-gray-300 hover:text-cyan-400"
+                class="text-gray-400 hover:text-white"
                 >linktr.ee/nakzuwu</a
               >
             </p>
-
-            <p class="text-gray-400">-----------------</p>
-            <p><span class="text-green-400">Shell</span>: zsh 5.9</p>
-            <p><span class="text-purple-400">Uptime</span>: Always online 🌐</p>
+            <p class="text-gray-500">-----------------</p>
+            <p><span class="text-gray-400">Os</span>: AnduinOs</p>
+            <p>
+              <span class="text-gray-400">Games</span>: Osu!, MC, CS2, Phasmo
+            </p>
           </div>
         </div>
       </div>
-
-      <!-- Footer -->
-      <p class="text-gray-500 text-sm mt-10">
-         <span class="text-pink-400">nkz@2025</span> 
+      <p class="text-gray-600 text-sm mt-10">
+         <span class="text-white">nkz@2025</span> 
       </p>
     </section>
-    <!-- <script src="script.js"></script> -->
-    \
+
     <script>
-      // Animasi fade-up
+      // === FADE UP - MUNCUL SAAT VISIBLE, FADE OUT SAAT TIDAK VISIBLE ===
       document.addEventListener("DOMContentLoaded", function () {
         const fadeElements = document.querySelectorAll(".fade-up");
 
         const fadeInOnScroll = function () {
           fadeElements.forEach((element) => {
-            const elementTop = element.getBoundingClientRect().top;
-            const elementVisible = 150;
+            const rect = element.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
 
-            if (elementTop < window.innerHeight - elementVisible) {
+            // Cek apakah element visible di viewport
+            const isVisible = rect.top < windowHeight - 50 && rect.bottom > 50;
+
+            if (isVisible) {
               element.classList.add("visible");
+            } else {
+              element.classList.remove("visible");
             }
           });
         };
@@ -672,50 +945,36 @@
       const wordEl = document.getElementById("changing-word");
       let index = 0;
       let animating = false;
-
       function changeWord() {
         if (animating) return;
         animating = true;
-
-        // animasi keluar
         wordEl.style.animation =
           "slideOut 0.6s cubic-bezier(0.45, 0, 0.55, 1) forwards";
-
         setTimeout(() => {
-          // ganti teks di tengah transisi
           index = (index + 1) % words.length;
           wordEl.textContent = words[index];
-
-          // animasi masuk
           wordEl.style.animation =
             "slideIn 0.6s cubic-bezier(0.45, 0, 0.55, 1) forwards";
-
-          // reset animating setelah animasi selesai
           setTimeout(() => (animating = false), 600);
         }, 600);
       }
-
-      // 🔥 Langsung jalankan animasi pertama saat halaman selesai dimuat
       window.addEventListener("load", () => {
-        changeWord(); // animasi langsung mulai
-        setInterval(changeWord, 2200); // lanjut looping
+        changeWord();
+        setInterval(changeWord, 2200);
       });
-      /* ======================================================
- 🌀 ANIMATED ROWS
-====================================================== */
+
+      // Animated rows
       const rows = [
         { el: document.getElementById("row1"), dir: -1, speed: 0.4 },
         { el: document.getElementById("row2"), dir: -1, speed: 0.2 },
         { el: document.getElementById("row3"), dir: -1, speed: 0.3 },
       ];
       const offsets = [0, 0, 0];
-
       function animateRows() {
         rows.forEach((row, i) => {
           if (!row.el) return;
           offsets[i] += row.speed * row.dir;
           row.el.style.transform = `translateX(${offsets[i]}px)`;
-
           const width = row.el.scrollWidth / 2;
           if (Math.abs(offsets[i]) >= width) offsets[i] = 0;
         });
@@ -723,34 +982,29 @@
       }
       animateRows();
 
-      /* ======================================================
- 🔁 TAB SWITCHING
-====================================================== */
+      // Tabs
       function initializeTabs() {
         const tabs = document.querySelectorAll(".tab-btn");
         const contents = document.querySelectorAll(".tab-content");
-
         tabs.forEach((tab) => {
           tab.addEventListener("click", () => {
             tabs.forEach((t) =>
               t.classList.remove(
                 "active-tab",
-                "text-pink-400",
+                "text-white",
                 "border-b-2",
-                "border-pink-400"
-              )
+                "border-white",
+              ),
             );
             tab.classList.add(
               "active-tab",
-              "text-pink-400",
+              "text-white",
               "border-b-2",
-              "border-pink-400"
+              "border-white",
             );
-
             contents.forEach((c) => c.classList.add("hidden"));
             const target = document.querySelector(`#tab-${tab.dataset.tab}`);
             if (target) target.classList.remove("hidden");
-
             if (tab.dataset.tab === "github") initializePortfolioRepos();
             if (tab.dataset.tab === "design") initializePortfolioImages();
             if (tab.dataset.tab === "motion") initializePortfolioVideos();
@@ -758,9 +1012,6 @@
         });
       }
 
-      /* ======================================================
- 💻 REPOSITORIES
-====================================================== */
       function initializePortfolioRepos() {
         const repos = [
           {
@@ -795,31 +1046,17 @@
             language: "C#",
           },
         ];
-
         const container = document.querySelector(".portfolio-repos");
         container.innerHTML = "";
-
         repos.forEach((repo) => {
           const card = document.createElement("div");
           card.className =
-            "bg-[#1e1e1e] border border-[#2e2e2e] rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 w-full";
-          card.innerHTML = `
-      <div class="p-4">
-        <h4 class="text-lg font-semibold text-pink-400 mb-1">${repo.name}</h4>
-        <p class="text-gray-400 text-sm mb-3">${repo.description}</p>
-        <p class="text-xs text-gray-500 mb-2">Language: ${repo.language}</p>
-        <a href="${repo.url}" target="_blank"
-           class="block text-center bg-pink-600 hover:bg-pink-700 text-white text-sm font-medium py-2 transition-colors duration-300 rounded-md">
-           View on GitHub
-        </a>
-      </div>`;
+            "bg-[#121212] border border-[#2b2b2b] overflow-hidden shadow-none hover:bg-[#1b1b1b] hover:-translate-y-1 transition-all duration-300 w-full";
+          card.innerHTML = `<div class="p-4"><h4 class="text-lg font-semibold text-white mb-1">${repo.name}</h4><p class="text-gray-400 text-sm mb-3">${repo.description}</p><p class="text-xs text-gray-500 mb-2">Language: ${repo.language}</p><a href="${repo.url}" target="_blank" class="block text-center bg-[#1f1f1f] hover:bg-[#2a2a2a] text-white text-sm font-medium py-2 transition-colors duration-300 border border-[#3a3a3a]">View on GitHub</a></div>`;
           container.appendChild(card);
         });
       }
 
-      /* ======================================================
- 🖼️ DESIGN IMAGES
-====================================================== */
       function initializePortfolioImages() {
         const images = [
           "images/ALTAIR 2.png",
@@ -863,7 +1100,6 @@
           "images/sparrwo.png",
           "images/tes apex.png",
         ];
-
         const container = document.querySelector(".portfolio-images");
         container.innerHTML = "";
         images.forEach((src) => {
@@ -871,14 +1107,11 @@
           img.src = src;
           img.alt = "Design preview";
           img.className =
-            "rounded-xl w-full h-auto object-cover transition-transform duration-300 hover:scale-105 mb-4";
+            "border border-[#2a2a2a] w-full h-auto object-cover transition-transform duration-300 hover:scale-105 mb-4 grayscale";
           container.appendChild(img);
         });
       }
 
-      /* ======================================================
- 🎞️ MOTION VIDEOS
-====================================================== */
       function initializePortfolioVideos() {
         const videos = [
           "videos/Closing.mp4",
@@ -888,7 +1121,6 @@
           "videos/opening.mp4",
           "videos/sato.mp4",
         ];
-
         const container = document.querySelector(".portfolio-videos");
         container.innerHTML = "";
         videos.forEach((src) => {
@@ -896,37 +1128,15 @@
           video.src = src;
           video.controls = true;
           video.className =
-            "rounded-xl w-full h-auto object-cover transition-transform duration-300 hover:scale-105 mb-4";
+            "border border-[#2a2a2a] w-full h-auto object-cover transition-transform duration-300 hover:scale-105 mb-4 grayscale";
           container.appendChild(video);
         });
       }
 
-      /* ======================================================
- 🚀 INIT
-====================================================== */
       document.addEventListener("DOMContentLoaded", () => {
         initializeTabs();
         initializePortfolioRepos();
       });
-
-      const reveals = document.querySelectorAll(".reveal");
-
-      const revealOnScroll = () => {
-        for (const el of reveals) {
-          const windowHeight = window.innerHeight;
-          const elementTop = el.getBoundingClientRect().top;
-          const revealPoint = 100; // semakin kecil = muncul lebih cepat
-
-          if (elementTop < windowHeight - revealPoint) {
-            el.classList.add("active");
-          } else {
-            el.classList.remove("active");
-          }
-        }
-      };
-
-      window.addEventListener("scroll", revealOnScroll);
-      window.addEventListener("load", revealOnScroll);
     </script>
   </body>
 </html>
